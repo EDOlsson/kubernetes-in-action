@@ -26,4 +26,8 @@ steps:
 - script: |
     $secret = ConvertTo-SecureString -String "my-Awesome-password {(Get-Date).Second}" -AsPlainText -Force
     Set-AzureKeyVaultSecret -VaultName 'eo-test-keyvault' -Name 'some-secret' -SecretValue $secret
-    echo Done!
+    Write-Host 'Done!'
+
+- script: |
+    $secret = Get-AzureKeyVaultSecret -VaultName 'eo-test-keyvault' -Name 'some-secret'
+    Write-Host "The secret is {$secret.SecretValueText}."
