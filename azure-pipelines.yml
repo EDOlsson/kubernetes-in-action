@@ -23,11 +23,14 @@ steps:
     KeyVaultName: 'eo-test-keyvault'
     SecretsFilter: 'some-secret'
 
-- script: |
+- pwsh: |
     $secret = ConvertTo-SecureString -String "my-Awesome-password {(Get-Date).Second}" -AsPlainText -Force
     Set-AzureKeyVaultSecret -VaultName 'eo-test-keyvault' -Name 'some-secret' -SecretValue $secret
     Write-Host 'Done!'
+    displayName: 'Update Secret in Vault'
+    continueOnError: true
 
-- script: |
+- pwsh: |
     $secret = Get-AzureKeyVaultSecret -VaultName 'eo-test-keyvault' -Name 'some-secret'
     Write-Host "The secret is {$secret.SecretValueText}."
+    displayName: 'Display Secret in Vault'
