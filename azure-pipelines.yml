@@ -29,6 +29,10 @@ steps:
 
     Find-Module -Name AzureRM | Write-Host
 
+    Find-Module -Name AzureRM.Profile | Install-Module $_ -AcceptLicense
+
+    Find-Module -Name AzureRM | Write-Host
+
     $m = Find-Module -Name AzureRM.KeyVault -Repository PSGallery
     if($m -eq $null) { Write-Host 'Did not find AzureRM.KeyVault module!!' }
     Import-Module -Name AzureRM.KeyVault
