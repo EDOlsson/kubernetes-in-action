@@ -29,7 +29,7 @@ steps:
 
     Find-Module -Name AzureRM | Write-Host
 
-    Find-Module -Name AzureRM.Profile | Install-Module $_ -AcceptLicense
+    Find-Module -Name AzureRM.Profile | Install-Module -Name $_.Name -AcceptLicense
 
     Find-Module -Name AzureRM | Write-Host
 
