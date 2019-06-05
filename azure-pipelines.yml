@@ -24,20 +24,20 @@ steps:
     SecretsFilter: 'some-secret'
 
 - pwsh: |
-    Get-PackageProvider
+    # Get-PackageProvider
 
-    Write-Host 'DEBUG >> About to Find-PackageProvider Nuget'
+    # Write-Host 'DEBUG >> About to Find-PackageProvider Nuget'
 
-    Find-PackageProvider -Name 'Nuget' -AllVersions
-    Install-PackageProvider -Name 'Nuget' -RequiredVersion 2.8.5.216 -Force -Verbose
+    # Find-PackageProvider -Name 'Nuget' -AllVersions
+    # Install-PackageProvider -Name 'Nuget' -RequiredVersion 2.8.5.216 -Force -Verbose
 
-    Write-Host 'DEBUG >> NuGet installed.'
+    # Write-Host 'DEBUG >> NuGet installed.'
 
     $m = Find-Module -Name AzureRM
 
     Write-Host "DEBUG >> AzureRM module found $m"
 
-    Install-Module $m -AcceptLicense
+    Install-Module $m -Scope CurrentUser -Force -AcceptLicense
 
     Write-Host "DEBUG >> AzureRM module installed."
     
