@@ -24,7 +24,7 @@ steps:
     SecretsFilter: 'some-secret'
 
 - pwsh: |
-    Find-Module -Name AzureRM| Install-Module $_ -AcceptLicense
+    Find-Module -Name AzureRM | Install-Module
     Import-Module -Name AzureRM
     
     $secret = ConvertTo-SecureString -String "my-Awesome-password {(Get-Date).Second}" -AsPlainText -Force
