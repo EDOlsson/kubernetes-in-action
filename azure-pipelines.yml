@@ -25,7 +25,7 @@ steps:
 
 - pwsh: |
     Find-PackageProvider -Name 'Nuget' -AllVersions
-    Install-PackageProvider -Name Nuget' -RequiredVersion 2.8.5.216 -Force -Verbose
+    Install-PackageProvider -Name 'Nuget' -RequiredVersion 2.8.5.216 -Force -Verbose
 
     Write-Host 'DEBUG >> NuGet installed.'
 
