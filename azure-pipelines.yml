@@ -31,7 +31,7 @@ steps:
 
     $m = Find-Module -Name AzureRM
 
-    Write-Host "DEBUG >> AzureRM module found : $(${m})"
+    Write-Host "DEBUG >> AzureRM module found $m"
 
     Install-Module $m -AcceptLicense
 
