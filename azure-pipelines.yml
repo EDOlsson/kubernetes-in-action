@@ -24,8 +24,8 @@ steps:
     SecretsFilter: 'some-secret'
 
 - pwsh: |
-    Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
-    Install-Module -Name AzureRM.KeyVault -AcceptLicense
+    # Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
+    Find-Module -Name AzureRM.KeyVault | Install-Module $_ -AcceptLicense
     Import-Module -Name AzureRM.KeyVault
     $secret = ConvertTo-SecureString -String "my-Awesome-password {(Get-Date).Second}" -AsPlainText -Force
     Set-AzureKeyVaultSecret -VaultName 'eo-test-keyvault' -Name 'some-secret' -SecretValue $secret
@@ -34,8 +34,8 @@ steps:
   continueOnError: 'true'
 
 - pwsh: |
-    Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
-    Install-Module -Name AzureRM.KeyVault -AcceptLicense
+    # Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
+    Find-Module -Name AzureRM.KeyVault | Install-Module $_ -AcceptLicense
     Import-Module -Name AzureRM.KeyVault
     $secret = Get-AzureKeyVaultSecret -VaultName 'eo-test-keyvault' -Name 'some-secret'
     Write-Host "The secret is {$secret.SecretValueText}."
