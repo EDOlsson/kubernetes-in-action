@@ -24,7 +24,8 @@ steps:
     SecretsFilter: 'some-secret'
 
 - pwsh: |
-    Install-PackageProvider -Name NuGet -RequiredVersion 2.8.5.201 -Force
+    Find-PackageProvider -Name 'Nuget' -AllVersions
+    Install-PackageProvider -Name Nuget' -RequiredVersion 2.8.5.216 -Force -Verbose
 
     Write-Host 'DEBUG >> NuGet gotten.'
 
