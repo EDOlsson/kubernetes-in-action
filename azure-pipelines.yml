@@ -33,17 +33,17 @@ steps:
 
     # Write-Host 'DEBUG >> NuGet installed.'
 
-    $m = Find-Module -Name AzureRM
+    $m = Find-Module -Name AzureRM.KeyVault
 
-    Write-Host "DEBUG >> AzureRM module found $m"
+    Write-Host "DEBUG >> AzureRM.KeyVault module found $m"
 
     Install-Module $m -Scope CurrentUser -Force -AcceptLicense
 
-    Write-Host "DEBUG >> AzureRM module installed."
+    Write-Host "DEBUG >> AzureRM.KeyVault module installed."
     
-    Import-Module -Name AzureRM
+    Import-Module -Name AzureRM.KeyVault
 
-    Write-Host "DEBUG >> AzureRM module imported."
+    Write-Host "DEBUG >> AzureRM.KeyVault module imported."
 
     Write-Host "TRACE >> About to write secret to KeyVault"
     
