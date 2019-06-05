@@ -24,7 +24,7 @@ steps:
     SecretsFilter: 'some-secret'
 
 - pwsh: |
-    Install-PackageManager NuGet -Scope CurrentUser -Force
+    Get-PackageProvider NuGet -ForceBootstrap
     $m = Find-Module -Name AzureRM
     Install-Module $m -AcceptLicense
     
