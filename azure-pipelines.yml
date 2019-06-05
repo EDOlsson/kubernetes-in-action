@@ -29,8 +29,10 @@ steps:
 
     Find-Module -Name AzureRM | Write-Host
 
-    Find-Module -Name AzureRM.Profile | Install-Module -Name $_.Name -AcceptLicense
+    Write-Host 'DEBUG About to install AzureRM.Profile'
+    Find-Module -Name 'AzureRM.Profile' | Install-Module -Name $_.Name -AcceptLicense
 
+    Write-Host 'DEBUG AzureRM.Profile installed. About to Find-Modules again.'
     Find-Module -Name AzureRM | Write-Host
 
     $m = Find-Module -Name AzureRM.KeyVault -Repository PSGallery
