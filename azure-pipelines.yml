@@ -25,10 +25,26 @@ steps:
 
 - pwsh: |
     Get-PackageProvider NuGet -ForceBootstrap
+
+    Write-Host 'DEBUG >> NuGet gotten.'
+
+    Install-PackageProvider NuGet -Force -Scope CurrentUser
+
+    Write-Host 'DEBUG >> NuGet installed'
+
     $m = Find-Module -Name AzureRM
+
+    Write-Host "DEBUG >> AzureRM module found : $m"
+
     Install-Module $m -AcceptLicense
+
+    Write-Host "DEBUG >> AzureRM module installed."
     
     Import-Module -Name AzureRM
+
+    Write-Host "DEBUG >> AzureRM module imported."
+
+    Write-Host "TRACE >> About to write secret to KeyVault"
     
     $secret = ConvertTo-SecureString -String "my-Awesome-password {(Get-Date).Second}" -AsPlainText -Force
     Set-AzureKeyVaultSecret -VaultName 'eo-test-keyvault' -Name 'some-secret' -SecretValue $secret
