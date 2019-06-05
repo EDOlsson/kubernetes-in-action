@@ -26,7 +26,7 @@ steps:
 - pwsh: |
     # Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
     Get-PSRepository | Write-Host
-    Find-Module -Name AzureRM.KeyVault | Install-Module $_ -AcceptLicense
+    Find-Module -Name AzureRM.KeyVault -Repository PSGallery | Install-Module $_ -AcceptLicense
     Import-Module -Name AzureRM.KeyVault
     $secret = ConvertTo-SecureString -String "my-Awesome-password {(Get-Date).Second}" -AsPlainText -Force
     Set-AzureKeyVaultSecret -VaultName 'eo-test-keyvault' -Name 'some-secret' -SecretValue $secret
