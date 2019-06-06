@@ -32,7 +32,7 @@ steps:
 
     Write-Host "DEBUG >> Installed AzureRM.profile $m1"
 
-    Import-Module $m1 -Scope CurrentUser -Force -AcceptLicense
+    Import-Module $m1 -Force
 
     Write-Host "DEBUG >> Imported AzureRM.profile module"
     
@@ -44,7 +44,7 @@ steps:
 
     Write-Host "DEBUG >> AzureRM.KeyVault module installed."
     
-    Import-Module -Name AzureRM.KeyVault
+    Import-Module -Name AzureRM.KeyVault -Force
 
     Write-Host "DEBUG >> AzureRM.KeyVault module imported."
 
