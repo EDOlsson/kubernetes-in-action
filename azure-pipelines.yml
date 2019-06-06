@@ -32,7 +32,7 @@ steps:
 
     Write-Host "DEBUG >> Installed AzureRM.profile $m1"
 
-    Import-Module $m1 -Force
+    Import-Module -Name $m1.Name -Force
 
     Write-Host "DEBUG >> Imported AzureRM.profile module"
     
