@@ -24,7 +24,7 @@ steps:
     SecretsFilter: 'some-secret'
 
 - pwsh: |
-    $m1 = Find-Module -Name AzureRM.Profile
+    $m1 = Find-Module -Name AzureRM.Profile -RequiredVersion 5.5.1
     Install-Module $m1 -Scope CurrentUser -Force -AcceptLicense
     
     $m = Find-Module -Name AzureRM.KeyVault
