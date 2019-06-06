@@ -26,7 +26,7 @@ steps:
 - pwsh: |
     Write-Host "Current module autoloading preference : $PSModuleAutoloadingPreference"
     
-    $PSModuleAutoloadingPreference = All
+    $PSModuleAutoloadingPreference = 'All'
 
     Find-Module -Name AzureRM.KeyVault | Install-Module -Scope CurrentUser -Force -AcceptLicense -Verbose
 
