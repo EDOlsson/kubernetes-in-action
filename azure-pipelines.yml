@@ -34,7 +34,7 @@ steps:
     
     # Write-Host '>>>>>>>>>>>> About to import AzureRM.KeyVault module'
 
-    # Import-Module AzureRM.KeyVault -Verbose
+    Import-Module AzureRM.KeyVault -Verbose
 
     # Write-Host ">>>>>>>>>>>> About to write secret to KeyVault"
 
