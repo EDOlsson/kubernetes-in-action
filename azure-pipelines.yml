@@ -36,7 +36,7 @@ steps:
 
     # Write-Host "DEBUG >> AzureRM.KeyVault module imported."
 
-    Import-Module AzureRM.KeyVault -Verbose
+    Import-Module AzureRM.KeyVault -Scope 'Local' -Verbose
 
     Get-Command -Module AzureRM.KeyVault -Verbose
     
