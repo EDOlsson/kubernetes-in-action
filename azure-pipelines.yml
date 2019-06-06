@@ -24,7 +24,10 @@ steps:
     SecretsFilter: 'some-secret'
 
 - pwsh: |
+    Write-Host "Current module autoloading preference : $PSModuleAutoloadingPreference"
+    
     $PSModuleAutoloadingPreference = 'All'
+
     # $m1 = Find-Module -Name AzureRM.profile
 
     # Write-Host "DEBUG >> Found AzureRM.profile module $m1"
@@ -33,21 +36,21 @@ steps:
 
     Write-Host "DEBUG >> Installed AzureRM.profile $m1"
 
-    Import-Module -Name $m1.Name -Force -Verbose
+    # Import-Module -Name $m1.Name -Force -Verbose
 
-    Write-Host "DEBUG >> Imported AzureRM.profile module"
+    # Write-Host "DEBUG >> Imported AzureRM.profile module"
     
-    $m = Find-Module -Name AzureRM.KeyVault
+    # $m = Find-Module -Name AzureRM.KeyVault
 
-    Write-Host "DEBUG >> AzureRM.KeyVault module found $m"
+    # Write-Host "DEBUG >> AzureRM.KeyVault module found $m"
 
-    Install-Module $m -Scope CurrentUser -Force -AcceptLicense -Verbose
+    Find-Module -Name AzureRM.KeyVault | Install-Module -Scope CurrentUser -Force -AcceptLicense -Verbose
 
     Write-Host "DEBUG >> AzureRM.KeyVault module installed."
     
-    Import-Module -Name AzureRM.KeyVault -Force -Verbose
+    # Import-Module -Name AzureRM.KeyVault -Force -Verbose
 
-    Write-Host "DEBUG >> AzureRM.KeyVault module imported."
+    # Write-Host "DEBUG >> AzureRM.KeyVault module imported."
 
     Write-Host "TRACE >> About to write secret to KeyVault"
     
