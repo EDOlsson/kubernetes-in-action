@@ -28,7 +28,7 @@ steps:
 
     # Write-Host "DEBUG >> Found AzureRM.profile module $m1"
 
-    Find-Module -Name AzureRM.profile | Install-Module -Verbose # $m1 -Scope CurrentUser -Force -AcceptLicense -Verbose
+    Find-Module -Name AzureRM.profile | Install-Module -Scope CurrentUser -Force -AcceptLicense -Verbose
 
     Write-Host "DEBUG >> Installed AzureRM.profile $m1"
 
