@@ -24,11 +24,9 @@ steps:
     SecretsFilter: 'some-secret'
 
 - pwsh: |
-    Write-Host "Current module autoloading preference : $PSModuleAutoloadingPreference"
-    
     $PSModuleAutoloadingPreference = 'All'
 
-    Find-Module -Name AzureRM.KeyVault | Install-Module -Scope CurrentUser -Force -AcceptLicense -Verbose
+    Find-Module -Name AzureRM.KeyVault | Install-Module -Force -AcceptLicense -Verbose
 
     Write-Host "DEBUG >> AzureRM.KeyVault module installed."
     
@@ -36,7 +34,7 @@ steps:
 
     # Write-Host "DEBUG >> AzureRM.KeyVault module imported."
 
-    Import-Module AzureRM.KeyVault -Scope 'Local' -Verbose
+    Import-Module AzureRM.KeyVault -Verbose
 
     Get-Command -Module AzureRM.KeyVault -Verbose
     
