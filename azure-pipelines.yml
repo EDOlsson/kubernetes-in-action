@@ -48,11 +48,13 @@ steps:
 
     Write-Host "DEBUG >> AzureRM.KeyVault module installed."
     
-    Import-Module -Name AzureRM.KeyVault -Force -Verbose
+    # Import-Module -Name AzureRM.KeyVault -Force -Verbose
 
-    Write-Host "DEBUG >> AzureRM.KeyVault module imported."
+    # Write-Host "DEBUG >> AzureRM.KeyVault module imported."
 
     Write-Host "TRACE >> About to write secret to KeyVault"
+
+    Get-Command -Module AzureRM.KeyVault -Verbose
     
     $secret = ConvertTo-SecureString -String "my-Awesome-password {(Get-Date).Second}" -AsPlainText -Force
     Set-AzureKeyVaultSecret -VaultName 'eo-test-keyvault' -Name 'some-secret' -SecretValue $secret
