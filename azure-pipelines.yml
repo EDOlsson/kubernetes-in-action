@@ -40,9 +40,9 @@ steps:
 
     Write-Host "DEBUG >> AzureRM.KeyVault module installed."
     
-    # Import-Module -Name AzureRM.KeyVault
+    Import-Module -Name AzureRM.KeyVault
 
-    # Write-Host "DEBUG >> AzureRM.KeyVault module imported."
+    Write-Host "DEBUG >> AzureRM.KeyVault module imported."
 
     Write-Host "TRACE >> About to write secret to KeyVault"
     
