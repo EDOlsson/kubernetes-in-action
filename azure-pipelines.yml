@@ -24,15 +24,9 @@ steps:
     SecretsFilter: 'some-secret'
 
 - pwsh: |
-    # Get-PackageProvider
-
-    # Write-Host 'DEBUG >> About to Find-PackageProvider Nuget'
-
-    # Find-PackageProvider -Name 'Nuget' -AllVersions
-    # Install-PackageProvider -Name 'Nuget' -RequiredVersion 2.8.5.216 -Force -Verbose
-
-    # Write-Host 'DEBUG >> NuGet installed.'
-
+    $m1 = Find-Module -Name AzureRM.Profile
+    Install-Module $m1 -Scope CurrentUser -Force -AcceptLicense
+    
     $m = Find-Module -Name AzureRM.KeyVault
 
     Write-Host "DEBUG >> AzureRM.KeyVault module found $m"
