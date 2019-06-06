@@ -36,6 +36,8 @@ steps:
 
     # Write-Host "DEBUG >> AzureRM.KeyVault module imported."
 
+    Import-Module AzureRM.KeyVault -Verbose
+
     Get-Command -Module AzureRM.KeyVault -Verbose
     
     Write-Host "TRACE >> About to write secret to KeyVault"
