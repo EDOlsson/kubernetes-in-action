@@ -24,11 +24,11 @@ steps:
     SecretsFilter: 'some-secret'
 
 - pwsh: |
-    $m1 = Find-Module -Name AzureRM.profile
+    # $m1 = Find-Module -Name AzureRM.profile
 
-    Write-Host "DEBUG >> Found AzureRM.profile module $m1"
+    # Write-Host "DEBUG >> Found AzureRM.profile module $m1"
 
-    Install-Module $m1 -Scope CurrentUser -Force -AcceptLicense -Verbose
+    Find-Module -Name AzureRM.profile | Install-Module -Verbose # $m1 -Scope CurrentUser -Force -AcceptLicense -Verbose
 
     Write-Host "DEBUG >> Installed AzureRM.profile $m1"
 
