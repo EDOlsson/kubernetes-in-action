@@ -28,11 +28,11 @@ steps:
 
     Write-Host "DEBUG >> Found AzureRM.profile module $m1"
 
-    Install-Module $m1 -Scope CurrentUser -Force -AcceptLicense
+    Install-Module $m1 -Scope CurrentUser -Force -AcceptLicense -Verbose
 
     Write-Host "DEBUG >> Installed AzureRM.profile $m1"
 
-    Import-Module -Name $m1.Name -Force
+    Import-Module -Name $m1.Name -Force -Verbose
 
     Write-Host "DEBUG >> Imported AzureRM.profile module"
     
@@ -40,11 +40,11 @@ steps:
 
     Write-Host "DEBUG >> AzureRM.KeyVault module found $m"
 
-    Install-Module $m -Scope CurrentUser -Force -AcceptLicense
+    Install-Module $m -Scope CurrentUser -Force -AcceptLicense -Verbose
 
     Write-Host "DEBUG >> AzureRM.KeyVault module installed."
     
-    Import-Module -Name AzureRM.KeyVault -Force
+    Import-Module -Name AzureRM.KeyVault -Force -Verbose
 
     Write-Host "DEBUG >> AzureRM.KeyVault module imported."
 
