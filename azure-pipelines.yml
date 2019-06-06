@@ -31,6 +31,10 @@ steps:
     Install-Module $m1 -Scope CurrentUser -Force -AcceptLicense
 
     Write-Host "DEBUG >> Installed AzureRM.profile $m1"
+
+    Import-Module $m1 -Scope CurrentUser -Force -AcceptLicense
+
+    Write-Host "DEBUG >> Imported AzureRM.profile module"
     
     $m = Find-Module -Name AzureRM.KeyVault
 
