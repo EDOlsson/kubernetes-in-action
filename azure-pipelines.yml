@@ -26,23 +26,7 @@ steps:
 - pwsh: |
     Write-Host "Current module autoloading preference : $PSModuleAutoloadingPreference"
     
-    $PSModuleAutoloadingPreference = 'All'
-
-    # $m1 = Find-Module -Name AzureRM.profile
-
-    # Write-Host "DEBUG >> Found AzureRM.profile module $m1"
-
-    # Find-Module -Name AzureRM.profile | Install-Module -Scope CurrentUser -Force -AcceptLicense -Verbose
-
-    # Write-Host "DEBUG >> Installed AzureRM.profile $m1"
-
-    # Import-Module -Name $m1.Name -Force -Verbose
-
-    # Write-Host "DEBUG >> Imported AzureRM.profile module"
-    
-    # $m = Find-Module -Name AzureRM.KeyVault
-
-    # Write-Host "DEBUG >> AzureRM.KeyVault module found $m"
+    $PSModuleAutoloadingPreference = All
 
     Find-Module -Name AzureRM.KeyVault | Install-Module -Scope CurrentUser -Force -AcceptLicense -Verbose
 
@@ -52,12 +36,12 @@ steps:
 
     # Write-Host "DEBUG >> AzureRM.KeyVault module imported."
 
-    Write-Host "TRACE >> About to write secret to KeyVault"
-
     Get-Command -Module AzureRM.KeyVault -Verbose
     
+    Write-Host "TRACE >> About to write secret to KeyVault"
+
     $secret = ConvertTo-SecureString -String "my-Awesome-password {(Get-Date).Second}" -AsPlainText -Force
-    Set-AzureKeyVaultSecret -VaultName 'eo-test-keyvault' -Name 'some-secret' -SecretValue $secret
+    AzureRM.KeyVault\Set-AzureKeyVaultSecret -VaultName 'eo-test-keyvault' -Name 'some-secret' -SecretValue $secret
     Write-Host 'Done!'
   displayName: 'Update Secret in Vault'
   continueOnError: 'false'
