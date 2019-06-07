@@ -50,6 +50,7 @@ steps:
     scriptLocation: 'inlineScript'
     inlineScript: |
       az keyvault secret set --vault-name 'eo-test-keyvault' --name 'some-secret' --value "my-Awesome-password $(date +%s)"
+  displayName: 'Update Secret in Vault'
 
 # - pwsh: |
 #     # Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
@@ -65,4 +66,5 @@ steps:
     scriptLocation: 'inlineScript'
     arguments: vaultName, secretName
     inlineScript: |
-      az keyvault secret show --vault-name $(vaultName) --name $(secretName)
+      az keyvault secret show --vault-name 'eo-test-keyvault' --name 'some-secret'
+  displayName: 'Get Secret from Vault'
