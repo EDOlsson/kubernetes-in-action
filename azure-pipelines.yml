@@ -68,3 +68,19 @@ steps:
     inlineScript: |
       az keyvault secret show --vault-name 'eo-test-keyvault' --name 'some-secret'
   displayName: 'Get Secret from Vault'
+
+# - task: AzureCLI@1
+#   inputs:
+#     azureSubscription: 'Visual Studio Enterprise(1b81c0f2-5820-4f8e-a92a-d714b6957750)'
+#     scriptLocation: 'inlineScript'
+#     arguments: vaultName, secretName
+#     inlineScript: |
+#       import hmac
+#       import hashlib
+#       import base64
+
+#       secret = az keyvault secret show --vault-name 'eo-test-keyvault' --name 'some-signing-keys'
+
+#       dig = hmac.new()
+
+#   displayName: 'Roll Key'
