@@ -10,13 +10,6 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
-
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
 - task: AzureKeyVault@1
   inputs:
     azureSubscription: 'Visual Studio Enterprise(1b81c0f2-5820-4f8e-a92a-d714b6957750)'
@@ -50,7 +43,7 @@ steps:
     scriptLocation: 'inlineScript'
     arguments: vaultName, secretName
     inlineScript: |
-      az keyvault secret set --vault-name $(vaultName) --name $(secretName) --value 'my-Awesome-password '
+      az keyvault secret set --vault-name $(vaultName) --name $(secretName) --value "my-Awesome-password ${date +%s}"
 
 # - pwsh: |
 #     # Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
