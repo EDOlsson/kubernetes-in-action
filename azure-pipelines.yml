@@ -49,7 +49,7 @@ steps:
     azureSubscription: 'Visual Studio Enterprise(1b81c0f2-5820-4f8e-a92a-d714b6957750)'
     scriptLocation: 'inlineScript'
     inlineScript: |
-      az keyvault secret set --vault-name 'eo-test-vault' --name 'some-secret' --value "my-Awesome-password $(date +%s)"
+      az keyvault secret set --vault-name 'eo-test-keyvault' --name 'some-secret' --value "my-Awesome-password $(date +%s)"
 
 # - pwsh: |
 #     # Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
