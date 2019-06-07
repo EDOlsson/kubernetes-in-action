@@ -7,7 +7,7 @@ trigger:
 - master
 
 pool:
-  vmImage: 'windows-2019'
+  vmImage: 'ubuntu-latest'
 
 steps:
 - script: echo Hello, world!
@@ -23,31 +23,47 @@ steps:
     KeyVaultName: 'eo-test-keyvault'
     SecretsFilter: 'some-secret'
 
-- pwsh: |
-    # $PSModuleAutoloadingPreference = 'All'
+# - pwsh: |
+#     # $PSModuleAutoloadingPreference = 'All'
 
-    Find-Module -Name AzureRM.KeyVault | Install-Module -Force -AcceptLicense -Verbose
+#     Find-Module -Name AzureRM.KeyVault | Install-Module -Force -AcceptLicense -Verbose
 
-    # Write-Host '>>>>>>>>>>>> AzureRM.KeyVault module installed.'
+#     # Write-Host '>>>>>>>>>>>> AzureRM.KeyVault module installed.'
 
-    # Get-Command -Module AzureRM.KeyVault -Verbose
+#     # Get-Command -Module AzureRM.KeyVault -Verbose
     
-    # Write-Host '>>>>>>>>>>>> About to import AzureRM.KeyVault module'
+#     # Write-Host '>>>>>>>>>>>> About to import AzureRM.KeyVault module'
 
-    Import-Module AzureRM.KeyVault -Verbose
+#     Import-Module AzureRM.KeyVault -Verbose
 
-    # Write-Host ">>>>>>>>>>>> About to write secret to KeyVault"
+#     # Write-Host ">>>>>>>>>>>> About to write secret to KeyVault"
 
-    $secret = ConvertTo-SecureString -String "my-Awesome-password {(Get-Date).Second}" -AsPlainText -Force
-    AzureRM.KeyVault\Set-AzureKeyVaultSecret -VaultName 'eo-test-keyvault' -Name 'some-secret' -SecretValue $secret
-    Write-Host 'Done!'
-  displayName: 'Update Secret in Vault'
-  continueOnError: 'false'
+#     $secret = ConvertTo-SecureString -String "my-Awesome-password {(Get-Date).Second}" -AsPlainText -Force
+#     AzureRM.KeyVault\Set-AzureKeyVaultSecret -VaultName 'eo-test-keyvault' -Name 'some-secret' -SecretValue $secret
+#     Write-Host 'Done!'
+#   displayName: 'Update Secret in Vault'
+#   continueOnError: 'false'
 
-- pwsh: |
-    # Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
-    Find-Module -Name AzureRM.KeyVault | Install-Module $_ -AcceptLicense
-    Import-Module -Name AzureRM.KeyVault
-    $secret = Get-AzureKeyVaultSecret -VaultName 'eo-test-keyvault' -Name 'some-secret'
-    Write-Host "The secret is {$secret.SecretValueText}."
-  displayName: 'Display Secret in Vault'
+- task: AzureCLI@1
+  inputs:
+    azureSubscription: 'Visual Studio Enterprise(1b81c0f2-5820-4f8e-a92a-d714b6957750)'
+    scriptLocation: 'inlineScript'
+    arguments: vaultName, secretName
+    inlineScript: |
+      az keyvault secret set --vault-name $(vaultName) --name $(secretName) --value 'my-Awesome-password '
+
+# - pwsh: |
+#     # Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
+#     Find-Module -Name AzureRM.KeyVault | Install-Module $_ -AcceptLicense
+#     Import-Module -Name AzureRM.KeyVault
+#     $secret = Get-AzureKeyVaultSecret -VaultName 'eo-test-keyvault' -Name 'some-secret'
+#     Write-Host "The secret is {$secret.SecretValueText}."
+#   displayName: 'Display Secret in Vault'
+
+- task: AzureCLI@1
+  inputs:
+    azureSubscription: 'Visual Studio Enterprise(1b81c0f2-5820-4f8e-a92a-d714b6957750)'
+    scriptLocation: 'inlineScript'
+    arguments: vaultName, secretName
+    inlineScript: |
+      az keyvault secret get --vault-name $(vaultName) --name $(secretName)
