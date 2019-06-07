@@ -43,7 +43,7 @@ steps:
     scriptLocation: 'inlineScript'
     arguments: vaultName, secretName
     inlineScript: |
-      az keyvault secret set --vault-name $(vaultName) --name $(secretName) --value "my-Awesome-password ${date +%s}"
+      az keyvault secret set --vault-name $(vaultName) --name $(secretName) --value "my-Awesome-password $(date +%s)"
 
 # - pwsh: |
 #     # Install-PackageProvider -Name NuGet -Force -Scope CurrentUser
