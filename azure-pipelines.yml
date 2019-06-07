@@ -65,4 +65,4 @@ steps:
     scriptLocation: 'inlineScript'
     arguments: vaultName, secretName
     inlineScript: |
-      az keyvault secret get --vault-name $(vaultName) --name $(secretName)
+      az keyvault secret show --vault-name $(vaultName) --name $(secretName)
